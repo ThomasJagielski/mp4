@@ -7,9 +7,9 @@ class Goomba:
         self.y = y
         self.vx = vx
         self.vy = vy
-        self.sprite_sheet = pg.image.load('media/graphics/enemies.png')
-        self.image = self.get_image(0,4,16,16)
-        self.image_dead = self.get_image(61, 0, 16, 16)
+        self.image = pg.image.load('media/graphics/goomba.jpg')
+        #self.image = self.get_image(0,4,16,16)
+        #self.image_dead = self.get_image(61, 0, 16, 16)
 
         self.rect = self.image.get_rect()
 
