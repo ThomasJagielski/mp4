@@ -1,6 +1,7 @@
+from character import Character
 import pygame as pg
 
-class Goomba:
+class Goomba(Character):
 
     def __init__(self, x=0, y=0, vx=0, vy=0):
         self.x = x
@@ -27,8 +28,8 @@ class Goomba:
         return image
 
     def move(self):
-        self.vx = 1
-        self.vy = 1
+        self.vx = 0
+        self.vy = 0
         self.x += self.vx
         self.y += self.vy
 

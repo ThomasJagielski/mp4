@@ -7,9 +7,9 @@ authors: awenstrup and ThomasJagielski
 """
 
 #----------Import Statements------------------
-import pygame as pg
+import pygame
 from pygame.locals import *
-pg.init()
+pygame.init()
 
 #import keyboard as k
 
@@ -17,6 +17,8 @@ pg.init()
 #from mushroom import Mushroom
 #from decorations import Decorations
 from goomba import Goomba
+from controller import Controller
+from view import View 
 
 #----------Global Variable Definitions-----------
 display_height = 600
@@ -27,7 +29,7 @@ white = (255,255,255)
 
 #----------Helper Functions-------------
 def setup_window():
-    screen = pg.display.set_mode((display_width,display_height))
+    screen = pygame.display.set_mode((display_width,display_height))
     #screen.set_caption('Mario Level 1-1')
     return screen
 
@@ -37,19 +39,27 @@ def add_goobma_test():
     g1_rect = g1.image.get_rect()
 #----------Main Method---------------
 def main():
-    screen = pg.display.set_mode((display_width, display_height))
+    screen = pygame.display.set_mode((display_width, display_height))
     g1 = Goomba(0, 0, 0, 0)
 
+    '''
+    controller =
 
-    while 1:
-        pg.display.update()
+    running = True
+    while running:
+        '''
+        controller.update()
+        view.draw()
+        '''
+
+        pygame.display.update()
         screen.fill(white)
         screen.blit(g1.image, g1.rect)
-        pg.display.flip()
+        pygame.display.flip()
         g1.update()
-        #if(k.is_pressed('q')):
-    #        pg.quit()
-    #quit()
-    return
+        for event in pygame.event.get():
+            if event.type == pygame.locals.QUIT:
+                running = False
+    pygame.quit()
 
 main()

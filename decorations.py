@@ -1,1 +1,3 @@
-class Decorations:
+import item
+
+class Decorations(Item):
