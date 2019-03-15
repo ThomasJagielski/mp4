@@ -1,5 +1,6 @@
-Item = 0
+from items import Items
 
-class Decorations(Item):
-    def __init__(self):
-        return
+class Decorations(Items):
+    def __init__(self, x = 0, y = 0):
+        self.x = x
+        self.y = y
