@@ -20,6 +20,9 @@ from goomba import Goomba
 from controller import Controller
 from view import View
 from mario import Mario
+from model import Model
+
+import random
 
 
 #----------Global Variable Definitions-----------
@@ -70,11 +73,26 @@ def main2():
     pygame.quit()
 
 def main():
-    mario = Mario()
-    model = Model()
+
+    mario = Mario(y=300)
+    model = Model(mario)
+    model.items.append(Goomba(model, 400, 300, 0, 0))
     controller = Controller(model, mario)
 
-    view = View()
+    view = View(model)
+
+    running = True
+    while running:
+        print(model.frame.vx)
+        controller.update()
+        view.draw()
+        controller.key_input()
+
+        for event in pygame.event.get():
+            if event.type == pygame.locals.QUIT:
+                running = False
+
+    pygame.quit()
 
 
 main()
