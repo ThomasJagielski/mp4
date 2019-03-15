@@ -83,7 +83,6 @@ def main():
 
     running = True
     while running:
-        print(model.frame.vx)
         controller.update()
         view.draw()
         controller.key_input()
