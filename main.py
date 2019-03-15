@@ -18,7 +18,9 @@ pygame.init()
 #from decorations import Decorations
 from goomba import Goomba
 from controller import Controller
-from view import View 
+from view import View
+from mario import Mario
+
 
 #----------Global Variable Definitions-----------
 display_height = 600
@@ -38,12 +40,17 @@ def add_goobma_test():
     g1 = Goomba(0, 0, 0, 0)
     g1_rect = g1.image.get_rect()
 #----------Main Method---------------
-def main():
+def main2():
     screen = pygame.display.set_mode((display_width, display_height))
     g1 = Goomba(0, 0, 0, 0)
 
     '''
-    controller =
+    mario = Mario()
+    model = Model()
+    controller = Controller(model, mario)
+
+    view = View()
+    '''
 
     running = True
     while running:
@@ -61,5 +68,13 @@ def main():
             if event.type == pygame.locals.QUIT:
                 running = False
     pygame.quit()
+
+def main():
+    mario = Mario()
+    model = Model()
+    controller = Controller(model, mario)
+
+    view = View()
+
 
 main()

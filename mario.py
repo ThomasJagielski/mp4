@@ -1,4 +1,5 @@
-import character
+from character import Character
+import pygame as pg
 
 class Mario(Character):
     def __init__(self, x=0, y=0, vx=0, vy=0):
@@ -6,7 +7,7 @@ class Mario(Character):
         self.y = y
         self.vx = vx
         self.vy = vy
-        self.image = pg.image.load('media/graphics/goomba.jpg')
+        self.image = pg.image.load('media/mario_jumping.png')
         #self.image = self.get_image(0,4,16,16)
         #self.image_dead = self.get_image(61, 0, 16, 16)
 
