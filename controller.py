@@ -42,7 +42,7 @@ class Controller:
 
     def jump(self):
         if self.jump_flag and (not self.mario.in_air):
-            self.mario.vy = -2
+            self.mario.vy = -1
             self.mario.in_air = True
             self.jump_flag = False
         return

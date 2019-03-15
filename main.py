@@ -21,6 +21,7 @@ from controller import Controller
 from view import View
 from mario import Mario
 from model import Model
+from cloud import Cloud
 
 import random
 
@@ -77,6 +78,7 @@ def main():
     mario = Mario(y=300)
     model = Model(mario)
     model.items.append(Goomba(model, 400, 300, 0, 0))
+    model.items.append(Cloud(x=200,y=100))
     controller = Controller(model, mario)
 
     view = View(model)
