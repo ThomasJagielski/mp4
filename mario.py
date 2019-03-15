@@ -10,7 +10,7 @@ class Mario(Character):
         self.image = pg.image.load('media/mario_jumping.png')
         self.image = pg.transform.scale(self.image, (32, 32))
 
-        self.grav = -0.02
+        self.grav = -0.004
         self.in_air = True
         #self.image = self.get_image(0,4,16,16)
         #self.image_dead = self.get_image(61, 0, 16, 16)

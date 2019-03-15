@@ -1,5 +1,4 @@
 import pygame as pg
-import time
 
 class Controller:
     def __init__(self, model, mario):
@@ -17,20 +16,8 @@ class Controller:
             self.left_flag = True
         if keys[pg.K_RIGHT]:
             self.right_flag = True
-        if keys[pg.K_UP]:
+        if keys[pg.K_UP] and (not self.mario.in_air):
             self.jump_flag = True
-
-        """if event.type != pg.locals.KEYDOWN:
-            # self.model.frame.vx = 0.0
-            # self.model.mario.vy = 0.0
-            return
-        if event.key == pg.K_LEFT:
-            self.left_flag = True
-        if event.key == pg.K_RIGHT:
-            self.right_flag = True
-        if event.key == pg.K_UP and self.mario.in_air == False:
-            self.jump_flag = True
-        return"""
         # Down for pipes, later
 
     def update(self):
@@ -45,6 +32,7 @@ class Controller:
             self.mario.vy = -1
             self.mario.in_air = True
             self.jump_flag = False
+            print('jump')
         return
 
     def move_right(self):
