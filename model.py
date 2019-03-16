@@ -9,3 +9,5 @@ class Model:
     def update(self):
         self.frame.update()
         self.mario.update()
+        for item in self.items:
+            item.update()

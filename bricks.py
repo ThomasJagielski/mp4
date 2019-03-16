@@ -16,3 +16,5 @@ class Brick():
             blocks.append(self)
         return blocks
 
+    def update(self):
+        pass

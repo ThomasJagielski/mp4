@@ -78,7 +78,7 @@ def main2():
 def main():
     mario = Mario(y=300)
     model = Model(mario)
-    model.items.append(Goomba(model, 400, 300, 0, 0))
+    model.items.append(Goomba(model, 800, 300, -0.1, 0))
     for n in range(1, length, 400):
         model.items.append(Cloud(x= n, y=random.randint(50, 250)))
     for i in range(1,length,30):

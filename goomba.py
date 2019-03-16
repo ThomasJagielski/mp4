@@ -18,12 +18,22 @@ class Goomba(Character):
 
         self.rect = self.image.get_rect()
 
+        self.grav = -0.002
+
+
+
     def move(self):
+        self.vy -= self.grav
         self.x += self.vx
         self.y += self.vy
 
         self.rect.x += self.vx
         self.rect.y += self.vy
+
+        if (self.y > 492):
+            self.y = 492
+            self.vy = 0
+            self.in_air = False
 
     def stepped_on(self):
         self.image_dead
