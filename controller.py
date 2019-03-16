@@ -29,10 +29,9 @@ class Controller:
 
     def jump(self):
         if self.jump_flag and (not self.mario.in_air):
-            self.mario.vy = -1
+            self.mario.vy = -0.75
             self.mario.in_air = True
             self.jump_flag = False
-            print('jump')
         return
 
     def move_right(self):

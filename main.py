@@ -22,7 +22,7 @@ from view import View
 from mario import Mario
 from model import Model
 from cloud import Cloud
-
+from bricks import Brick
 import random
 
 
@@ -79,6 +79,9 @@ def main():
     model = Model(mario)
     model.items.append(Goomba(model, 400, 300, 0, 0))
     model.items.append(Cloud(x=200,y=100))
+    for i in range(1,3000,30):
+        model.items.append(Brick(x = i, y = 540))
+        model.items.append(Brick(x = i, y = 570))
     controller = Controller(model, mario)
 
     view = View(model)
