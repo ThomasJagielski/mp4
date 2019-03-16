@@ -74,12 +74,13 @@ def main2():
     pygame.quit()
 
 def main():
-
+    length = 5000
     mario = Mario(y=300)
     model = Model(mario)
     model.items.append(Goomba(model, 400, 300, 0, 0))
-    model.items.append(Cloud(x=200,y=100))
-    for i in range(1,3000,30):
+    for n in range(1, length, 400):
+        model.items.append(Cloud(x= n, y=random.randint(50, 250)))
+    for i in range(1,length,30):
         model.items.append(Brick(x = i, y = 540))
         model.items.append(Brick(x = i, y = 570))
     controller = Controller(model, mario)
