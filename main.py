@@ -33,6 +33,8 @@ display_width = 800
 black = (0,0,0)
 white = (255,255,255)
 
+length = 5000
+
 #----------Helper Functions-------------
 def setup_window():
     screen = pygame.display.set_mode((display_width,display_height))
@@ -74,7 +76,6 @@ def main2():
     pygame.quit()
 
 def main():
-    length = 5000
     mario = Mario(y=300)
     model = Model(mario)
     model.items.append(Goomba(model, 400, 300, 0, 0))
