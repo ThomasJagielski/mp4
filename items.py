@@ -6,5 +6,3 @@ class Items:
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
-
-        

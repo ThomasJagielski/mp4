@@ -19,6 +19,7 @@ class Goomba(Character):
         self.rect = self.image.get_rect()
 
         self.grav = -0.002
+        self.erase_me = False
 
 
 
@@ -36,10 +37,22 @@ class Goomba(Character):
             self.in_air = False
 
     def stepped_on(self):
-        self.image_dead
+        self.image_dead = pygame.image.load('')
+
+    def check_mario_collision(self):
+        if self.rect.colliderect(self.model.mario.rect):
+            if self.model.mario.in_air and self.model.mario.vy > 0:
+                self.model.mario.vy = -0.2
+                self.erase_me = True
+                print('Dead')
+            else:
+                pass
 
     def update(self):
         """
         Update the x and y position of the Goomba
         """
         self.move()
+        self.rect = self.image.get_rect(center=((self.x, self.y)))
+        self.check_mario_collision()
+        print("Goomba: x=", self.x, " y=", self.y)

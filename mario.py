@@ -7,6 +7,7 @@ class Mario(Character):
         self.y = y
         self.vx = vx
         self.vy = vy
+        self.model = None
         self.image = pg.image.load('media/mario_jumping.png')
         self.image = pg.transform.scale(self.image, (32, 32))
 
@@ -19,11 +20,9 @@ class Mario(Character):
 
     def move(self):
         self.vy -= self.grav
+        self.vx = self.model.frame.vx
         self.x += self.vx
         self.y += self.vy
-
-        self.rect.x += self.vx
-        self.rect.y += self.vy
 
         if (self.y > 505):
             self.y = 505
@@ -35,3 +34,5 @@ class Mario(Character):
         Update the x and y position of the Goomba
         """
         self.move()
+        self.rect = self.image.get_rect(center=(self.x, self.y))
+        print("Mario: x=", self.x, " y=", self.y)

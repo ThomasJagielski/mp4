@@ -38,6 +38,7 @@ class Controller:
         if self.right_flag == True:
             self.model.frame.vx = 0.5
             self.right_flag = False
+
         else:
             self.model.frame.vx = 0.0
         return
