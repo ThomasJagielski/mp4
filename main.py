@@ -23,6 +23,7 @@ from mario import Mario
 from model import Model
 from cloud import Cloud
 from bricks import Brick
+from pipe import Pipe
 import random
 
 
@@ -80,6 +81,7 @@ def main():
     model = Model(mario)
     mario.model = model
     model.items.append(Goomba(model, 800, 300, -0.1, 0))
+    model.items.append(Pipe(model, 800, 500))
     for n in range(1, length, 400):
         model.items.append(Cloud(x= n, y=random.randint(50, 250)))
     for i in range(1,length,30):
@@ -94,6 +96,9 @@ def main():
         controller.update()
         view.draw()
         controller.key_input()
+
+        if mario.dead:
+            pass
 
         for event in pygame.event.get():
             if event.type == pygame.locals.QUIT:

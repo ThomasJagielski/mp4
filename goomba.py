@@ -44,7 +44,7 @@ class Goomba(Character):
             if self.model.mario.in_air and self.model.mario.vy > 0:
                 self.model.mario.vy = -0.2
                 self.erase_me = True
-                print('Dead')
+
             else:
                 pass
 
@@ -55,4 +55,4 @@ class Goomba(Character):
         self.move()
         self.rect = self.image.get_rect(center=((self.x, self.y)))
         self.check_mario_collision()
-        print("Goomba: x=", self.x, " y=", self.y)
+    

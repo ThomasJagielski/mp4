@@ -35,7 +35,7 @@ class Controller:
         return
 
     def move_right(self):
-        if self.right_flag == True:
+        if self.right_flag == True and self.mario.blocked_right == False:
             self.model.frame.vx = 0.5
             self.right_flag = False
 
@@ -44,7 +44,7 @@ class Controller:
         return
 
     def move_left(self):
-        if self.left_flag == True:
+        if self.left_flag == True and self.mario.blocked_left == False:
             self.model.frame.vx = -0.5
             self.left_flag = False
             return
