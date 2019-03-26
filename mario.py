@@ -13,6 +13,8 @@ class Mario(Character):
 
         self.grav = -0.002
         self.in_air = True
+        self.blocked_right = False
+        self.blocked_left = False
         #self.image = self.get_image(0,4,16,16)
         #self.image_dead = self.get_image(61, 0, 16, 16)
 

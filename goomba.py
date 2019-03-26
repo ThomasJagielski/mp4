@@ -12,7 +12,7 @@ class Goomba(Character):
         self.vx = vx
         self.vy = vy
         self.image = pg.image.load('media/goomba.png')
-        self.image = pg.transform.scale(self.image, (60, 60))
+        self.image = pg.transform.scale(self.image, (24, 24))
         #self.image = self.get_image(0,4,16,16)
         #self.image_dead = self.get_image(61, 0, 16, 16)
 
@@ -31,8 +31,8 @@ class Goomba(Character):
         self.rect.x += self.vx
         self.rect.y += self.vy
 
-        if (self.y > 492):
-            self.y = 492
+        if (self.y > 515):
+            self.y = 515
             self.vy = 0
             self.in_air = False
 
