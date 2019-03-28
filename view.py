@@ -15,15 +15,22 @@ class View:
 
     def draw(self):
         """ Draw the current game state to the screen """
-        self.screen.fill(pg.Color(0,191,255))
-        for item in self.model.items:
-            try:
-                if item.erase_me:
-                    self.model.items.remove(item)
-                else:
+        if not (self.model.kill_mario or self.model.win):
+            self.screen.fill(pg.Color(0,191,255))
+            for item in self.model.items:
+                try:
+                    if item.erase_me:
+                        self.model.items.remove(item)
+                    else:
+                        self.screen.blit(item.image, [item.x - self.model.frame.range[0], item.y])
+                except AttributeError:
                     self.screen.blit(item.image, [item.x - self.model.frame.range[0], item.y])
-            except AttributeError:
-                self.screen.blit(item.image, [item.x - self.model.frame.range[0], item.y])
-        self.screen.blit(self.model.mario.image, [400, self.model.mario.y])
-        pg.display.update()
-        pg.display.flip()
+            self.screen.blit(self.model.mario.image, [400, self.model.mario.y])
+            pg.display.update()
+            pg.display.flip()
+        else:
+            gameover = pg.image.load('media/Gameover.png')
+            gameover = pg.transform.scale(gameover, (800, 600))
+            self.screen.blit(gameover,[0,0])
+            pg.display.update()
+            pg.display.flip()

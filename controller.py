@@ -38,7 +38,7 @@ class Controller:
         if self.right_flag == True and self.mario.blocked_right == False:
             self.model.frame.vx = 0.5
             self.right_flag = False
-
+            self.mario.moving_right = True
         else:
             self.model.frame.vx = 0.0
         return
@@ -47,6 +47,7 @@ class Controller:
         if self.left_flag == True and self.mario.blocked_left == False:
             self.model.frame.vx = -0.5
             self.left_flag = False
+            self.mario.moving_right = False
             return
         else:
             self.model.frame.vx = 0.0

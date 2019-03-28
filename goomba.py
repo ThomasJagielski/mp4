@@ -1,5 +1,6 @@
 from character import Character
 import pygame as pg
+from pipe import Pipe
 
 class Goomba(Character):
 
@@ -46,7 +47,12 @@ class Goomba(Character):
                 self.erase_me = True
 
             else:
-                pass
+                self.model.kill_mario = True
+
+    def check_pipe_collision(self):
+        for item in self.model.items:
+            if type(item) is Pipe and self.rect.colliderect(item.rect):
+                self.vx *= -1
 
     def update(self):
         """
@@ -55,4 +61,4 @@ class Goomba(Character):
         self.move()
         self.rect = self.image.get_rect(center=((self.x, self.y)))
         self.check_mario_collision()
-    
+        self.check_pipe_collision()

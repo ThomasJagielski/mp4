@@ -4,7 +4,7 @@ import random
 
 class Pipe(Items):
     def __init__(self, model, x=0, y=0, width = 100, height = 50):
-        self.image = pg.image.load('media/pipe.jpg')
+        self.image = pg.image.load('media/pipe.png')
         self.width = width
         self.height = height
         self.image = pg.transform.scale(self.image, (self.width, self.height))

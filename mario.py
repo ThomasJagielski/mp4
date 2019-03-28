@@ -8,8 +8,11 @@ class Mario(Character):
         self.vx = vx
         self.vy = vy
         self.model = None
-        self.image = pg.image.load('media/mario_jumping.png')
-        self.image = pg.transform.scale(self.image, (32, 32))
+        self.image_right = pg.image.load('media/mario_jumping.png')
+        self.image_left =  pg.image.load('media/mario_reverse.png')
+        self.image_right = pg.transform.scale(self.image_right, (32, 32))
+        self.image_left = pg.transform.scale(self.image_left, (32, 32))
+        self.image = self.image_right
 
         self.GROUND = 505
         self.ground = self.GROUND
@@ -23,6 +26,7 @@ class Mario(Character):
         #self.image_dead = self.get_image(61, 0, 16, 16)
 
         self.rect = self.image.get_rect()
+        self.moving_right = True
 
     def move(self):
         self.vy -= self.grav
@@ -33,13 +37,18 @@ class Mario(Character):
             self.x += self.vx
         self.y += self.vy
 
-        if not self.vx == 0:
-            print("Mario x: ", self.x)
-            print(self.blocked_left, self.blocked_right)
         if (self.y > self.ground):
             self.y = self.ground
             self.vy = 0
             self.in_air = False
+
+    def update_image(self):
+        if self.vx > 0 & self.moving_right == False:
+            self.image = self.image_right
+            self.moving_right = True
+        elif self.vx < 0 & self.moving_right:
+            self.image = self.image_left
+            self.moving_right = False
 
     def update(self):
         """
@@ -47,3 +56,4 @@ class Mario(Character):
         """
         self.move()
         self.rect = self.image.get_rect(center=(self.x, self.y))
+        self.update_image()
