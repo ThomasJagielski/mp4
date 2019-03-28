@@ -36,7 +36,7 @@ display_width = 800
 black = (0,0,0)
 white = (255,255,255)
 
-length = 5000
+length = 3000
 
 #----------Helper Functions-------------
 def setup_window():
