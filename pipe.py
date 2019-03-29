@@ -27,7 +27,7 @@ class Pipe(Items):
         if (self.model.mario.y < self.y and self.rect.colliderect(self.model.mario.rect)):
             self.model.mario.ground = self.model.mario.GROUND - self.height + 15
             self.model.mario.in_air = False
-            #self.model.mario.vy = 0
+            self.model.mario.vy = 0
             self.model.mario.blocked_left = False
             self.model.mario.blocked_right = False
         else:

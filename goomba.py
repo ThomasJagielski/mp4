@@ -42,10 +42,9 @@ class Goomba(Character):
 
     def check_mario_collision(self):
         if self.rect.colliderect(self.model.mario.rect):
-            if self.model.mario.in_air and self.model.mario.vy > 0:
+            if self.model.mario.vy > 0:
                 self.model.mario.vy = -0.2
                 self.erase_me = True
-
             else:
                 self.model.kill_mario = True
 

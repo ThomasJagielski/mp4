@@ -88,10 +88,13 @@ def main():
     model.items.append(Goomba(model, 700, 300, -0.1, 0))
     model.items.append(Goomba(model, 2000, 300, -0.1, 0))
     model.items.append(Goomba(model, 1000, 300, -0.1, 0))
+    model.items.append(Pipe(model, 600, 425, height = 125))
     model.items.append(Pipe(model, 800, 425, height = 125))
     model.items.append(Flag(model, length - 275, 250))
     model.items.append(Castle(model, length - 200, 350))
     model.items.append(Air_Bricks(model, 700, 450))
+    model.items.append(Air_Bricks(model, 1000, 450))
+    model.items.append(Air_Bricks(model, 1400, 450))
     for n in range(1, length, 400):
         model.items.append(Cloud(x= n, y=random.randint(50, 250)))
     for i in range(1,length,30):
