@@ -20,7 +20,7 @@ class Mario(Character):
         self.in_air = True
         self.blocked_right = False
         self.blocked_left = False
-
+        self.blocked_up = False
         self.dead = False
         #self.image = self.get_image(0,4,16,16)
         #self.image_dead = self.get_image(61, 0, 16, 16)
@@ -35,7 +35,13 @@ class Mario(Character):
             pass
         else:
             self.x += self.vx
-        self.y += self.vy
+
+        if (self.blocked_up):
+            self.vy = 0
+            self.y += 2
+            self.blocked_up = False
+        else:
+            self.y += self.vy
 
         if (self.y > self.ground):
             self.y = self.ground

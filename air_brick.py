@@ -2,11 +2,37 @@
 import pygame as pg
 
 class Air_Bricks():
-    def __init__(self, x = 0, y = 0):
+    def __init__(self, model, x = 0, y = 0):
         self.x = x
         self.y = y
+        self.model = model
         self.image = pg.image.load('media/brick_air.png')
         self.image = pg.transform.scale(self.image, (30, 30))
+        self.rect = self.image.get_rect()
+
+    def block_mario(self):
+        if (self.rect.colliderect(self.model.mario.rect)):
+            if (self.model.mario.y > self.y):
+                if self.model.mario.x - self.x < -25: #blocked on the right
+                    self.model.mario.blocked_left = False
+                    self.model.mario.blocked_right = True
+                elif self.model.mario.x - self.x > 20: #blocked on the left
+                    self.model.mario.blocked_right = False
+                    self.model.mario.blocked_left = True
+                elif self.model.mario.vy < 0:
+                    self.model.mario.ground = self.model.mario.GROUND
+                    self.model.mario.blocked_up = True
+            else:
+                if self.model.mario.x - self.x < -25: #blocked on the right
+                    self.model.mario.blocked_left = False
+                    self.model.mario.blocked_right = True
+                elif self.model.mario.x - self.x > 20: #blocked on the left
+                    self.model.mario.blocked_right = False
+                    self.model.mario.blocked_left = True
+                else: #blocked on bottom
+                    self.model.mario.ground = self.y - 30
+                    self.model.mario.blocked_up = False
 
     def update(self):
-        pass
+        self.block_mario()
+        self.rect = self.image.get_rect(topleft=((self.x - 15, self.y - 17)))
