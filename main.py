@@ -39,67 +39,50 @@ white = (255,255,255)
 
 length = 3000
 
+mario = Mario(x= 400, y=300)
+model = Model(mario)
+mario.model = model
+
 #----------Helper Functions-------------
 def setup_window():
     screen = pygame.display.set_mode((display_width,display_height))
     #screen.set_caption('Mario Level 1-1')
     return screen
 
-#----------Testing Functions--------------
-def add_goobma_test():
-    g1 = Goomba(0, 0, 0, 0)
-    g1_rect = g1.image.get_rect()
-#----------Main Method---------------
-def main2():
-    screen = pygame.display.set_mode((display_width, display_height))
-    g1 = Goomba(0, 0, 0, 0)
-
-    '''
-    mario = Mario()
-    model = Model()
-    controller = Controller(model, mario)
-
-    view = View()
-    '''
-
-    running = True
-    while running:
-        '''
-        controller.update()
-        view.draw()
-        '''
-
-        pygame.display.update()
-        screen.fill(white)
-        screen.blit(g1.image, g1.rect)
-        pygame.display.flip()
-        g1.update()
-        for event in pygame.event.get():
-            if event.type == pygame.locals.QUIT:
-                running = False
-    pygame.quit()
-
-def main():
-    mario = Mario(x= 400, y=300)
-    model = Model(mario)
-    mario.model = model
-    model.items.append(Goomba(model, 800, 300, -0.1, 0))
-    model.items.append(Goomba(model, 1500, 300, -0.1, 0))
-    model.items.append(Goomba(model, 700, 300, -0.1, 0))
-    model.items.append(Goomba(model, 2000, 300, -0.1, 0))
-    model.items.append(Goomba(model, 1000, 300, -0.1, 0))
-    model.items.append(Pipe(model, 600, 425, height = 125))
-    model.items.append(Pipe(model, 800, 425, height = 125))
-    model.items.append(Flag(model, length - 275, 250))
-    model.items.append(Castle(model, length - 200, 350))
-    model.items.append(Air_Bricks(model, 700, 450))
-    model.items.append(Air_Bricks(model, 1000, 450))
-    model.items.append(Air_Bricks(model, 1400, 450))
-    for n in range(1, length, 400):
-        model.items.append(Cloud(x= n, y=random.randint(50, 250)))
+#----------Add Items--------------
+def add_ground():
     for i in range(1,length,30):
         model.items.append(Brick(x = i, y = 540))
-        model.items.append(Brick(x = i, y = 570))
+        model.items.append(Brick(x = i, y = 570))  
+
+def add_items():
+    model.items.append(Goomba(model, 700, 300, -0.1, 0))
+    model.items.append(Goomba(model, 800, 300, -0.1, 0))
+    model.items.append(Goomba(model, 1000, 300, -0.1, 0))
+    model.items.append(Goomba(model, 1300, 300, -0.1, 0))
+    model.items.append(Goomba(model, 1500, 300, -0.1, 0))
+    model.items.append(Goomba(model, 1700, 300, -0.1, 0))
+    model.items.append(Goomba(model, 2800, 300, -0.1, 0))
+    model.items.append(Goomba(model, 3000, 300, -0.1, 0))
+
+    model.items.append(Pipe(model, 800, 425, height = 125))
+    model.items.append(Pipe(model, 2000, 425, height = 125))
+
+    model.items.append(Air_Bricks(model, 550, 450))
+    model.items.append(Air_Bricks(model, 1000, 450))
+    model.items.append(Air_Bricks(model, 1400, 450))
+    model.items.append(Air_Bricks(model, 2600, 450))
+
+    model.items.append(Flag(model, length - 275, 250))
+    model.items.append(Castle(model, length - 200, 350))
+    for n in range(1, length, 400):
+        model.items.append(Cloud(x= n, y=random.randint(50, 250))) 
+    
+#----------Main Method---------------
+def main():
+    add_items()
+    add_ground()
+
     controller = Controller(model, mario)
 
     view = View(model)
