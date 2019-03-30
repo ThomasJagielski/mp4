@@ -4,6 +4,7 @@ import random
 
 class Pipe(Items):
     def __init__(self, model, x=0, y=0, width = 100, height = 50):
+        """ Initialize the pipe with a model reference, a position (x and y), and a size """
         # initialize the image of the pipe
         self.image = pg.image.load('media/pipe.png')
         # set the width and height of the pipe
@@ -22,6 +23,7 @@ class Pipe(Items):
         self.model = model
 
     def block_mario(self):
+        """ Check if mario is blocked on the right or left by a pipe """
         # check if there is a collision between the pipe and mario
         if (not self.rect.colliderect(self.model.mario.rect)):
             # if there is no collision set blocked_left and blocked_right to false
@@ -35,6 +37,8 @@ class Pipe(Items):
             self.model.mario.blocked_left = True
 
     def block_mario_down(self):
+        """ Check if mario is blocked in the downward direction - this happens when 
+        mario is on top of the pipe"""
         # check if there is a collision between mario and the pipe
         if (self.model.mario.y < self.y and self.rect.colliderect(self.model.mario.rect)):
             # redefine the ground as being on top of the pipe if there is a collision and mario's y value is greater than the pipe's
@@ -51,6 +55,7 @@ class Pipe(Items):
             self.model.mario.ground = self.model.mario.GROUND
 
     def update(self):
+        """ Update the pipe's position and check if mario is blocked by the pipe """
         # check is mario is blocked left or right
         self.block_mario()
         # check if mario is on top of the pipe

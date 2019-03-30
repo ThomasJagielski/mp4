@@ -48,6 +48,7 @@ view = View(model)
 
 #----------Helper Functions-------------
 def setup_window():
+    """ Initialize the game window """
     # intialize the game window
     screen = pygame.display.set_mode((display_width,display_height))
     screen.set_caption('Mario Level 1-1 Parody')
@@ -63,6 +64,7 @@ def add_ground():
         model.items.append(Brick(x = i, y = 570))  
 
 def add_items():
+    """ Initialize all items to be added to the model"""
     # create all instances of goombas
     model.items.append(Goomba(model, 700, 300, -0.1, 0))
     model.items.append(Goomba(model, 800, 300, -0.1, 0))
@@ -89,6 +91,7 @@ def add_items():
     
 #----------Main Method---------------
 def main():
+    """ Definition of main. Updates the entire game system """
     # add all the items
     add_items()
     # add the ground image

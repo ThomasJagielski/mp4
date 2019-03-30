@@ -3,6 +3,7 @@ import pygame as pg
 
 class Mario(Character):
     def __init__(self, x=0, y=0, vx=0, vy=0):
+        """ Iniaitialize mario with a position (x and y) and a change in position (vx and vy)"""
         # initialize the x and y positon of mario
         self.x = x
         self.y = y
@@ -39,6 +40,7 @@ class Mario(Character):
         self.moving_right = True
 
     def move(self):
+        """ Definition of cases for mario's movement """
         # if mario is in the air move mario down with the force of gravity until he reaches the ground
         self.vy -= self.grav
         # change the frame of the model based on the change in x
@@ -70,6 +72,7 @@ class Mario(Character):
             self.in_air = False
 
     def update_image(self):
+        """ Update the image based off if mario is moving to the right or to the left """
         # if mario is moving to the right, display the moving to the right image
         if self.vx > 0 & self.moving_right == False:
             self.image = self.image_right
@@ -80,6 +83,7 @@ class Mario(Character):
             self.moving_right = False
 
     def update(self):
+        """ Update mario and mario's rectangle based on movement input """
         # change the x and y positon of mario
         self.move()
         # change mario's rectangle to match the x and y position

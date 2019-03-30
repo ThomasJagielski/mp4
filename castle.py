@@ -3,6 +3,8 @@ import pygame as pg
 
 class Castle(Decorations):
     def __init__(self, model, x=0, y=0, width = 200, height = 200):
+        """ Initialize the castle decoration with a reference to the model,
+        a x and y position, and a size defined by width and height """
         # load the image of the castle
         self.image = pg.image.load('media/castle.png')
         # set the size of the castle

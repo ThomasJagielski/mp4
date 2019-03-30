@@ -3,6 +3,7 @@ import pygame as pg
 
 class Cloud(Decorations):
     def __init__(self, x=0, y=0):
+        """ Initialize the cloud decorations with a x and y postion """
         # set the x and y position of the clouds
         self.x = x
         self.y = y

@@ -2,6 +2,7 @@ import pygame as pg
 
 class Controller:
     def __init__(self, model, mario):
+        """ Initialize the controller with a reference to the model and a mario"""
         # initialize the model and mario contained in the controller class
         self.model = model
         self.mario = mario
@@ -13,6 +14,7 @@ class Controller:
 
 
     def key_input(self):
+        """ Check for keys being pressed to change the postion of mario"""
         keys = pg.key.get_pressed()
         if keys[pg.K_LEFT]:
             # if left key was pressed, change global to signify that
@@ -25,6 +27,7 @@ class Controller:
             self.jump_flag = True
 
     def jump(self):
+        """ Definition for mario jumping """
         if self.jump_flag and (not self.mario.in_air):
             # jump with an upwards velocity of 0.75 - gravity (negative is the upwards direction)
             self.mario.vy = -0.75
@@ -34,6 +37,7 @@ class Controller:
             self.jump_flag = False
 
     def move_right(self):
+        """ Definition of mario moving to the right """
         if self.right_flag == True and self.mario.blocked_right == False:
             # move to the right with a velocity of 0.5
             self.model.frame.vx = 0.5
@@ -46,6 +50,7 @@ class Controller:
             self.model.frame.vx = 0.0
 
     def move_left(self):
+        """ Definition of mario moving to the left"""
         if self.left_flag == True and self.mario.blocked_left == False:
             # move to the left with a velocity of 0.5
             self.model.frame.vx = -0.5
@@ -58,6 +63,7 @@ class Controller:
             self.model.frame.vx = 0.0
 
     def update(self):
+        """ Update the positon of mario based on key inputs """
         # update the model
         self.model.update()
         # check if the left key is pressed and mario should move to the left

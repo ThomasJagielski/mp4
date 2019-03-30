@@ -2,6 +2,7 @@ from math import fabs
 
 class Frame:
     def __init__(self, xmin, xmax):
+        """ Initialize the frame with the x bounds """
         # initialize the change in x to 0
         self.vx = 0.0
         # set the view of the frame with the x and y position
@@ -10,6 +11,7 @@ class Frame:
         self.frame_of_view = self.range[1] - self.range[0]
 
     def update(self):
+        """ Update the view of the frame based on the change in x """
         # add the change in x to both the xmin and xmax
         self.range[0] += self.vx
         self.range[1] += self.vx

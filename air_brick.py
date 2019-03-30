@@ -3,6 +3,7 @@ import pygame as pg
 
 class Air_Bricks():
     def __init__(self, model, x = 0, y = 0):
+        """ Initialize air bricks with a reference to the model and an x and y position """
         # set the x and y poisition of the block
         self.x = x
         self.y = y
@@ -15,6 +16,8 @@ class Air_Bricks():
         self.rect = self.image.get_rect()
 
     def block_mario(self):
+        """ Check if there are interactions between mario and the blocks,
+        if there are block mario in the direction he is unable to move in"""
         if (self.rect.colliderect(self.model.mario.rect)):
             # if mario is on top of the air bricks
             if (self.model.mario.y > self.y):
@@ -43,6 +46,7 @@ class Air_Bricks():
                     self.model.mario.blocked_up = False
 
     def update(self):
+        """ Update the positioning of the blocks and if mario is blocked """
         # update the status of the model to show if mario is interacting with the blocks, and thus, is blocked in some direction
         self.block_mario()
         self.rect = self.image.get_rect(topleft=((self.x - 15, self.y - 17)))

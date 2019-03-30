@@ -5,6 +5,8 @@ from pipe import Pipe
 class Goomba(Character):
 
     def __init__(self, model, x=0, y=0, vx=0, vy=0):
+        """ Initialize the goomba with a reference to the model, a position (defined by x and y),
+        and a change in the x and y values """
         # intialize the model for interaction
         self.model = model
         # initialize the x and y position of the goomba
@@ -24,6 +26,7 @@ class Goomba(Character):
         self.erase_me = False
 
     def move(self):
+        """ Definiton of moving the goomba based on the change in x and y """
         # move the goomba down with the velocity of gravity (negative is upward in a pygame window)
         self.vy -= self.grav
         # move the x and y position of the goomba based off the change in x and y 
@@ -39,6 +42,7 @@ class Goomba(Character):
             self.in_air = False
 
     def check_mario_collision(self):
+        """ Definition of cases for collisions between mario and the goomba """
         # check if mario is colliding with the goomba (based on rectangle intersection)
         if self.rect.colliderect(self.model.mario.rect):
             # if mario is moving downwards, erase the goomba
