@@ -26,9 +26,7 @@ class Pipe(Items):
         """ Check if mario is blocked on the right or left by a pipe """
         # check if there is a collision between the pipe and mario
         if (not self.rect.colliderect(self.model.mario.rect)):
-            # if there is no collision set blocked_left and blocked_right to false
-            self.model.mario.blocked_left = False
-            self.model.mario.blocked_right = False
+            pass
         elif (self.model.mario.x < self.x):
             # if there is a collision and mario's x value is less than the pipe's, mario is blocked on the right
             self.model.mario.blocked_right = True
@@ -37,7 +35,7 @@ class Pipe(Items):
             self.model.mario.blocked_left = True
 
     def block_mario_down(self):
-        """ Check if mario is blocked in the downward direction - this happens when 
+        """ Check if mario is blocked in the downward direction - this happens when
         mario is on top of the pipe"""
         # check if there is a collision between mario and the pipe
         if (self.model.mario.y < self.y and self.rect.colliderect(self.model.mario.rect)):
@@ -51,8 +49,7 @@ class Pipe(Items):
             self.model.mario.blocked_left = False
             self.model.mario.blocked_right = False
         else:
-            # otherwise, reset mario's ground to the initial position of ground (505)
-            self.model.mario.ground = self.model.mario.GROUND
+            pass
 
     def update(self):
         """ Update the pipe's position and check if mario is blocked by the pipe """

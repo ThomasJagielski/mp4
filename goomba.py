@@ -29,7 +29,7 @@ class Goomba(Character):
         """ Definiton of moving the goomba based on the change in x and y """
         # move the goomba down with the velocity of gravity (negative is upward in a pygame window)
         self.vy -= self.grav
-        # move the x and y position of the goomba based off the change in x and y 
+        # move the x and y position of the goomba based off the change in x and y
         self.x += self.vx
         self.y += self.vy
         # move the rectangle at the same rate the goomba image is moving
@@ -45,13 +45,14 @@ class Goomba(Character):
         """ Definition of cases for collisions between mario and the goomba """
         # check if mario is colliding with the goomba (based on rectangle intersection)
         if self.rect.colliderect(self.model.mario.rect):
-            # if mario is moving downwards, erase the goomba
-            if self.model.mario.vy > 0:
+            # if mario is moving downwards or is above the goomba, erase the goomba
+            if self.model.mario.vy > 0 or self.y - self.model.mario.y > 15:
                 self.model.mario.vy = -0.2
                 self.erase_me = True
             else:
                 # if mario runs into the goomba end game as mario is "dead"
                 self.model.kill_mario = True
+                
 
     def check_pipe_collision(self):
         # check if there is a collision between the goomba and a pipe

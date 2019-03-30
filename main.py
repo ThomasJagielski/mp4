@@ -36,7 +36,7 @@ length = 3000
 
 # create a mario with an initial position of x = 400 and y = 300
 mario = Mario(x= 400, y=300)
-# create a model with mario 
+# create a model with mario
 model = Model(mario)
 # set mario's model to the model created
 mario.model = model
@@ -54,6 +54,13 @@ def setup_window():
     screen.set_caption('Mario Level 1-1 Parody')
     return screen
 
+def reset_mario_flags():
+    """Resets all of Mario's flags to the default state"""
+    mario.blocked_up = False
+    mario.blocked_left = False
+    mario.blocked_right = False
+    mario.ground = mario.GROUND
+
 #----------Add Items--------------
 def add_ground():
     """
@@ -61,7 +68,7 @@ def add_ground():
     """
     for i in range(1,length,30):
         model.items.append(Brick(x = i, y = 540))
-        model.items.append(Brick(x = i, y = 570))  
+        model.items.append(Brick(x = i, y = 570))
 
 def add_items():
     """ Initialize all items to be added to the model"""
@@ -87,8 +94,8 @@ def add_items():
     model.items.append(Castle(model, length - 200, 350))
     # add clouds to display
     for n in range(1, length, 400):
-        model.items.append(Cloud(x= n, y=random.randint(50, 250))) 
-    
+        model.items.append(Cloud(x= n, y=random.randint(50, 250)))
+
 #----------Main Method---------------
 def main():
     """ Definition of main. Updates the entire game system """
@@ -109,6 +116,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.locals.QUIT:
                 running = False
+        reset_mario_flags()
     pygame.quit()
 
 main()
